@@ -1,0 +1,153 @@
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <form [formGroup]="schedularForm" (ngSubmit)="onSubmit(schedularForm.value)">
+      <p-panel header="Create Schedular">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid dv-sched">
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Room: <span class="red-ast">*</span>
+            </div>
+            <div class="ui-grid-col-6">
+              <p-dropdown [options]="rooms" [disabled]="room" [formControl]="schedularForm.controls['room']" [autoWidth]="false" (ngModelChange)="onRoomChange($event)"></p-dropdown>
+            </div>
+            <div class="ui-grid-col-4">
+              <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!schedularForm.controls['room'].valid && schedularForm.controls['room'].dirty">
+                <i class="fa fa-close"></i> Room is required
+              </div>
+            </div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Device: <span class="red-ast">*</span>
+            </div>
+            <div class="ui-grid-col-6">
+              <p-dropdown [options]="devices" [disabled]="device" [formControl]="schedularForm.controls['device']" [autoWidth]="false"
+                (ngModelChange)="onDeviceChange($event)"></p-dropdown>
+            </div>
+            <div class="ui-grid-col-4">
+              <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!schedularForm.controls['device'].valid && schedularForm.controls['device'].dirty">
+                <i class="fa fa-close"></i> Device is required
+              </div>
+            </div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              No: <span class="red-ast">*</span>
+            </div>
+            <div class="ui-grid-col-6">
+              <p-dropdown [options]="nos" [disabled]="no" [formControl]="schedularForm.controls['no']" [autoWidth]="false" (ngModelChange)="onNoChange($event)"></p-dropdown>
+            </div>
+            <div class="ui-grid-col-4">
+              <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!schedularForm.controls['no'].valid && schedularForm.controls['no'].dirty">
+                <i class="fa fa-close"></i> No is required
+              </div>
+            </div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              State: <span class="red-ast">*</span>
+            </div>
+            <div class="ui-grid-col-6">
+              <p-dropdown [options]="states" [disabled]="state" [formControl]="schedularForm.controls['state']" [autoWidth]="false"></p-dropdown>
+            </div>
+            <div class="ui-grid-col-4">
+              <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!schedularForm.controls['state'].valid && schedularForm.controls['state'].dirty">
+                <i class="fa fa-close"></i> State is required
+              </div>
+            </div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Generated Entry: <span class="red-ast">*</span>
+            </div>
+            <div class="ui-grid-col-10">
+              <span class='spncron' id='spancron'></span>
+            </div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              &nbsp;
+            </div>
+            <div class="ui-grid-col-10">
+              <div id='divcron' class="divcron"></div>
+            </div>
+          </div>
+          <div *ngIf="updatemode" class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              IsActive *:
+            </div>
+            <div class="ui-grid-col-6">
+              <p-checkbox [(ngModel)]="isActive" [formControl]="schedularForm.controls['isActive']" binary="true"></p-checkbox>
+            </div>
+            <div class="ui-grid-col-4">
+              &nbsp;
+            </div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2">
+              Comment: <span class="red-ast">*</span>
+            </div>
+            <div class="ui-grid-col-6">
+              <input pInputText type="text" [(ngModel)]="comments" [disabled]="comment" [formControl]="schedularForm.controls['comment']"
+                placeholder="Required - Min(6)" />
+            </div>
+            <div class="ui-grid-col-4">
+              <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!schedularForm.controls['comment'].valid && schedularForm.controls['comment'].dirty">
+                <i class="fa fa-close"></i>
+                <span *ngIf="schedularForm.controls['comment'].errors['required']">Comment is required</span>
+                <span *ngIf="schedularForm.controls['comment'].errors['minlength']">Must be longer than 6 characters</span>
+                <span *ngIf="schedularForm.controls['comment'].errors['maxlength']">Must be less than 150 characters</span>
+              </div>
+            </div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-2"></div>
+            <div class="ui-grid-col-3">
+              <div *ngIf="addmode">
+                <button pButton type="submit" label="Add" [disabled]="!schedularForm.valid"></button>
+              </div>
+              <div *ngIf="updatemode">
+                <button pButton type="button" label="Update" (click)="updateSchedular(schedularForm.value);"></button>
+              </div>
+            </div>
+            <div class="ui-grid-col-3">
+              <button pButton class="ui-button-secondary" type="button" label="Clear" (click)="clearFields();"></button>
+            </div>
+            <div class="ui-grid-col-4"></div>
+          </div>
+        </div>
+      </p-panel>
+    </form>
+    <br>
+    <p-dataTable [value]="schedular" [resizableColumns]="true" [rows]="5" [paginator]="true" [pageLinks]="3" [responsive]="true"
+      selectionMode="single" [(selection)]="selectedschedular" [contextMenu]="cm">
+      <p-header>Configured Schedulars</p-header>
+      <p-column field="room" header="Room" [sortable]="true"></p-column>
+      <p-column field="type" header="Device" [sortable]="true"></p-column>
+      <p-column field="no" header="No" [sortable]="true"></p-column>
+      <p-column field="status" header="State" [sortable]="true"></p-column>
+      <p-column field="timeslice" header="Timeslice" [sortable]="true"></p-column>
+      <p-column field="comment" header="Comment" [sortable]="true"></p-column>
+      <p-column field="isactive" header="Status" [sortable]="true">
+        <template let-col pTemplate let-sched="rowData">
+          <span [ngClass]="{'sched-active' : sched.isactive == 'Active','sched-disabled' : sched.isactive == 'Disabled'}">{{sched.isactive}}</span>
+        </template>
+      </p-column>
+      <p-column field="frequency" header="Freq" [sortable]="true"></p-column>
+      <p-column field="prev_schedule" header="Last Run" [sortable]="true"></p-column>
+      <p-column field="next_schedule" header="Next Run" [sortable]="true"></p-column>
+    </p-dataTable>
+
+
+    <p-contextMenu #cm [model]="items"></p-contextMenu>
+
+  </div>
+
+  <p-confirmDialog header="Delete Schedular" icon="fa fa-question-circle" width="425" #cd>
+    <p-footer>
+      <button type="button" pButton icon="fa-close" label="No" (click)="cd.reject()"></button>
+      <button type="button" pButton class="red-button" icon="fa-check" label="Yes" (click)="cd.accept()"></button>
+    </p-footer>
+  </p-confirmDialog>
+
+</div>

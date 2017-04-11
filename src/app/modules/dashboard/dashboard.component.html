@@ -1,0 +1,13 @@
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+        <p-dataTable [value]="activity" [resizableColumns]="true"  [rows]="10" [paginator]="true" [pageLinks]="3" [responsive]="true">
+            <p-header>Recent Activity</p-header>
+            <p-column field="room" header="Room" [sortable]="true"></p-column>
+            <p-column field="device" header="Device" [sortable]="true"></p-column>
+            <p-column field="no" header="No" [sortable]="true" ></p-column>
+            <p-column field="state" header="State" [sortable]="true"></p-column>
+            <p-column field="timestamp" header="Timestamp" [sortable]="true"></p-column>
+        </p-dataTable>
+    </div>
+</div>
+

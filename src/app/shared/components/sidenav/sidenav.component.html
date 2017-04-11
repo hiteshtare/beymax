@@ -1,0 +1,54 @@
+<header>
+  <nav class="top-nav">
+    <div class="container">
+      <div class="nav-wrapper"><a class="page-title">{{title}}</a></div>
+    </div>
+  </nav>
+  <div class="container">
+    <a href="" data-activates="slide-out" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
+  </div>
+  <div class="container">
+    <div class="action-bar">
+      <a href="#!" data-activates="actionbar" materialize="dropdown" class="action-bar"><i class="material-icons large-icons-on-large-only">more_vert</i></a>
+      <ul class="dropdown-content" id="actionbar">
+        <li><a href="javascript:location.reload()" class="waves-effect waves"><i class="material-icons dark left">refresh</i>Refresh</a></li>
+        <li class="divider"></li>
+        <li><a href="logout.html" class="waves-effect waves"><i class="material-icons dark left">input</i>Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  <ul id="slide-out" class="side-nav fixed">
+    <li class="logo">
+      <a class="logoIn" href="http://www.beymax.in">
+        <figure class="figlogonav"><img class="imglogonav" src="assets/Logo.png" alt="" /></figure>
+      </a>
+    </li>
+    <div class="search">
+      <div class="search-wrapper card">
+        <input id="search"><i class="material-icons">search</i>
+        <div class="search-results"></div>
+      </div>
+    </div>
+    <div class="dv-mrg-top">
+      &nbsp;
+    </div>
+    <div *ngFor="let pl of parentLinks">
+      <li *ngIf="!pl.hasChild" routerLinkActive="active-link">
+        <a routerLink="/{{pl.link}}" title="{{pl.name}}" (click)="linkClicked($event);" class="bold collapsible-header waves-effect waves-light"><i class="material-icons left">{{pl.icon}}</i>{{pl.name}}</a>
+      </li>
+      <li *ngIf="pl.hasChild" class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="bold collapsible-header waves-effect waves-light" title="{{pl.name}}">
+              <i class="material-icons left">{{pl.icon}}</i>{{pl.name}}</a>
+            <div class="collapsible-body">
+              <ul *ngFor="let cl of childLinks | childLinks:pl.id">
+                <li><a routerLinkActive="active-link" routerLink="/{{cl.link}}" title="{{cl.name}}" (click)="linkClicked($event);" class="collapsible-header waves-effect waves-light">{{cl.name}}</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </div>
+  </ul>
+</header>

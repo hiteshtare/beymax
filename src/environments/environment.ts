@@ -4,5 +4,20 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  phpEndpoint: 'http://localhost:8012/php/',
+  roomDetails: [
+        {
+            'roomNo': '01',
+            'roomName': 'Room 1',
+            'name': 'Hall',
+            'link': 'room1'
+        },
+        {
+            'roomNo': '02',
+            'roomName': 'Room 2',
+            'name': 'Bedroom',
+            'link': 'room2'
+        }
+    ]
 };

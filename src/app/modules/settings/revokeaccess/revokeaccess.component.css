@@ -1,0 +1,29 @@
+.chk-hdr{
+    margin-top: 0px !important;
+        color: #5C666A;
+            display: block;
+    font-size: 2em;
+}
+
+.chk-pad
+{
+margin-left: 10px
+}
+.ui-chkbox-label {
+    vertical-align: middle;
+    font-size: 1em;
+}
+
+.bld-lbl{
+font-weight: bold;
+font-size: 18px;
+}
+
+
+.dv-ctr{
+     text-align:center
+}
+
+fieldset{
+    margin: 10px;
+}
