@@ -1,7 +1,9 @@
-/* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { GrowlModule } from 'primeng/primeng';
+
+import { NotifyService } from './../../services/notify.service';
 
 import { MsgComponent } from './msg.component';
 
@@ -11,9 +13,11 @@ describe('MsgComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MsgComponent ]
+      declarations: [MsgComponent],
+      imports: [GrowlModule],
+      providers: [NotifyService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -22,7 +26,7 @@ describe('MsgComponent', () => {
     fixture.detectChanges();
   });
 
-   it('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

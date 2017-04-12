@@ -7,8 +7,8 @@ import { RoomService } from './../room.service';
 @Component({
   selector: 'app-room1',
   templateUrl: './room1.component.html',
-  styleUrls: ['./room1.component.css']
-  , encapsulation: ViewEncapsulation.None // applying custom styles to ngPrime components
+  styleUrls: ['../room.component.css'],
+  encapsulation: ViewEncapsulation.None // applying custom styles to ngPrime components
 })
 export class Room1Component implements OnInit {
 

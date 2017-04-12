@@ -1,10 +1,10 @@
-import { FeedbackComponent } from './feedback.component';
-import { TestBed, inject } from '@angular/core/testing';
-import { FeedbackService } from './feedback.service';
-
 import { HttpModule } from '@angular/http';
+import { TestBed, inject } from '@angular/core/testing';
 
-import { APP_CONFIG, AppConfig } from './../../../shared/config/app.config';
+import { AppConfig, APP_CONFIG } from './../../../shared/config/app.config';
+import { FeedbackService } from './feedback.service';
+import { NotifyService } from './../../../shared/services/notify.service';
+import { FeedbackComponent } from './feedback.component';
 
 describe('FeedbackService', () => {
   beforeEach(() => {

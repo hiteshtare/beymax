@@ -1,7 +1,11 @@
-import { CheckboxModule } from 'primeng/primeng';
-import { FormGroup } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { CheckboxModule, PanelModule } from 'primeng/primeng';
 
+import { AppConfig, APP_CONFIG } from './../../../shared/config/app.config';
+import { FeedbackService } from './feedback.service';
+import { NotifyService } from './../../../shared/services/notify.service';
 import { FeedbackComponent } from './feedback.component';
 
 describe('FeedbackComponent', () => {
@@ -10,8 +14,9 @@ describe('FeedbackComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FeedbackComponent,
-        FormGroup]
+      declarations: [FeedbackComponent],
+      imports: [CheckboxModule, FormsModule, HttpModule, PanelModule, ReactiveFormsModule],
+      providers: [FeedbackService, NotifyService, { provide: APP_CONFIG, useValue: AppConfig }]
     })
       .compileComponents();
   }));

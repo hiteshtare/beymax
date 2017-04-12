@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FeedbackService } from './feedback.service';
@@ -7,7 +7,8 @@ import { NotifyService } from './../../../shared/services/notify.service';
 @Component({
   selector: 'app-feedback',
   templateUrl: './feedback.component.html',
-  styleUrls: ['./feedback.component.css']
+  styleUrls: ['./feedback.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class FeedbackComponent implements OnInit {
 

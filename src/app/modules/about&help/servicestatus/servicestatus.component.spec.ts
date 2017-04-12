@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { PanelModule } from 'primeng/primeng';
 
 import { ServicestatusComponent } from './servicestatus.component';
 
@@ -8,9 +9,10 @@ describe('ServicestatusComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ServicestatusComponent ]
+      declarations: [ServicestatusComponent],
+      imports: [PanelModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

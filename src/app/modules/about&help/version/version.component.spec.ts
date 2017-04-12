@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { AppConfig, APP_CONFIG } from './../../../shared/config/app.config';
 import { VersionComponent } from './version.component';
 
 describe('VersionComponent', () => {
@@ -8,7 +9,8 @@ describe('VersionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [VersionComponent]
+      declarations: [VersionComponent],
+      providers: [{ provide: APP_CONFIG, useValue: AppConfig }]
     })
       .compileComponents();
   }));

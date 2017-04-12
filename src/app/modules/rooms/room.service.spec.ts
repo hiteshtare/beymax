@@ -1,10 +1,14 @@
 import { TestBed, inject } from '@angular/core/testing';
+import { HttpModule } from '@angular/http';
+
+import { APP_CONFIG, AppConfig } from './../../shared/config/app.config';
 import { RoomService } from './room.service';
 
 describe('RoomService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [RoomService]
+      imports: [HttpModule],
+      providers: [RoomService, { provide: APP_CONFIG, useValue: AppConfig }],
     });
   });
 
