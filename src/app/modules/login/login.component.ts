@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { LoginService } from './login.service';
+import { AuthenticationService } from './authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
   isError: boolean;
   errorMessage: string;
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router, private loginService: LoginService) {
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,
+    private authenticationService: AuthenticationService) {
     this.createForm();
   }
 
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(formValue) {
-    this.loginService.validateUser(formValue.user, formValue.pwd).subscribe((response) => {
+    this.authenticationService.login(formValue.user, formValue.pwd).subscribe((response) => {
       if (response.flag === 1) {
         this.isError = false;
         this.errorMessage = '';

@@ -1,4 +1,4 @@
-<header *ngIf="showSidenav">
+<header>
   <nav class="top-nav">
     <div class="container">
       <div class="nav-wrapper"><a class="page-title">{{title}}</a></div>
@@ -13,7 +13,7 @@
       <ul class="dropdown-content" id="actionbar">
         <li><a href="javascript:location.reload()" class="waves-effect waves"><i class="material-icons dark left">refresh</i>Refresh</a></li>
         <li class="divider"></li>
-        <li><a href="logout.html" class="waves-effect waves"><i class="material-icons dark left">input</i>Logout</a></li>
+        <li><a [routerLink]="['login']" class="waves-effect waves"><i class="material-icons dark left">input</i>Logout</a></li>
       </ul>
     </div>
   </div>
@@ -43,7 +43,8 @@
               <i class="material-icons left">{{pl.icon}}</i>{{pl.name}}</a>
             <div class="collapsible-body">
               <ul *ngFor="let cl of childLinks | childLinks:pl.id">
-                <li><a routerLinkActive="active-link" routerLink="/{{cl.link}}" title="{{cl.name}}" (click)="linkClicked($event);" class="collapsible-header waves-effect waves-light">{{cl.name}}</a></li>
+                <li><a routerLinkActive="active-link" routerLink="/{{cl.link}}" title="{{cl.name}}" (click)="linkClicked($event);"
+                    class="collapsible-header waves-effect waves-light">{{cl.name}}</a></li>
               </ul>
             </div>
           </li>

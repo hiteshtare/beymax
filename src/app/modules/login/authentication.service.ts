@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 import { APP_CONFIG, IAppConfig } from './../../shared/config/app.config';
 
 @Injectable()
-export class LoginService {
+export class AuthenticationService {
 
   phpEndpoint: string;
 
@@ -15,7 +15,7 @@ export class LoginService {
     this.phpEndpoint = this.config.phpEndpoint;
   }
 
-  validateUser(username: string, password: string) {
+  login(username: string, password: string) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
@@ -26,6 +26,10 @@ export class LoginService {
     return this.http.post(url, body, { headers: headers }).map((resp: Response) => {
       return resp.json();
     });
+  }
+
+  logout() {
+
   }
 
 }

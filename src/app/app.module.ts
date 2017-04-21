@@ -18,10 +18,10 @@ import { MsgComponent } from './shared/components/msg/msg.component'; // custom 
 import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
 import { ChildLinksPipe } from './shared/pipes/child-links.pipe'; // custom pipes
 import { RoomNoPipe } from './shared/pipes/room-no.pipe';
-import { ChangepasswordService } from './modules/settings/changepassword/changepassword.service'; // custom services
+import { AuthenticationService } from './modules/login/authentication.service'; // custom services
+import { ChangepasswordService } from './modules/settings/changepassword/changepassword.service';
 import { DashboardService } from './modules/dashboard/dashboard.service';
 import { FeedbackService } from './modules/about&help/feedback/feedback.service';
-import { LoginService } from './modules/login/login.service';
 import { RevokeAccessService } from './modules/settings/revokeaccess/revokeaccess.service';
 import { RoomService } from './modules/rooms/room.service';
 import { SchedularService } from './modules/schedular/schedular.service';
@@ -81,7 +81,7 @@ import { VersionComponent } from './modules/about&help/version/version.component
     SliderModule,
     routing
   ],
-  providers: [appRoutingProviders, ChangepasswordService, ConfirmationService, DashboardService, FeedbackService, LoginService,
+  providers: [appRoutingProviders, AuthenticationService, ChangepasswordService, ConfirmationService, DashboardService, FeedbackService,
     NotifyService, RevokeAccessService, RoomService, SchedularService, SidenavService,
     { provide: APP_CONFIG, useValue: AppConfig }, { provide: ErrorHandler, useClass: CustomErrorHandlerService }
   ],
