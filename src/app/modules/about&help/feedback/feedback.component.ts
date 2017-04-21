@@ -25,17 +25,17 @@ export class FeedbackComponent implements OnInit {
   createForm() {
     this.feedbackForm = this.fb.group({
       'message': ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(250)])],
-      'include': [false]
+      'isattach': [false]
     });
   }
 
   onSubmit(formValue) {
-    this.feedbackService.submitFeedback(formValue.message, formValue.include).subscribe((response) => {
-      console.log(response);
-      if (response === 'success') {
-        this.notifyService.toastMessage('success', 'Feedback Form', 'Feedback submitted successfully.');
+    this.feedbackService.submitFeedback(formValue.message, formValue.isattach).subscribe((response) => {
+      if (response.flag === 1) {
+        this.notifyService.toastMessage('success', 'Feedback', 'Feedback submitted successfully.');
+        this.createForm();
       } else {
-        this.notifyService.toastMessage('error', 'Feedback Form', 'Feedback submit failed!');
+        this.notifyService.toastMessage('error', 'Feedback', response.message);
       }
     });
   }

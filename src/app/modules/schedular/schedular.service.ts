@@ -29,8 +29,10 @@ export class SchedularService {
 
     return this.http.get(url).map((resp: Response) => {
       const fetchedSchedulars = [];
-      for (const sched of resp.json()) {
-        fetchedSchedulars.push(this.getSchedularfromJson(sched));
+      if (resp.json().flag === 1) {
+        for (const sched of resp.json().message) {
+          fetchedSchedulars.push(this.getSchedularfromJson(sched));
+        }
       }
       return fetchedSchedulars as Array<Schedular>;
     });
@@ -63,14 +65,17 @@ export class SchedularService {
       let fetchedData = [];
 
       if (this.name === 'room') {// for Room Dropdown
-        for (const opt of resp.json()) {
-          fetchedData.push(this.getDropDownfromJson(opt));
+        if (resp.json().flag === 1) {
+          for (const opt of resp.json().message) {
+            fetchedData.push(this.getDropDownfromJson(opt));
+          }
         }
       } else if (this.name === 'device') {// for Device Dropdown
-        for (const opt of resp.json()) {
-          fetchedData.push(this.getDropdownDatafromJson(opt));
+        if (resp.json().flag === 1) {
+          for (const opt of resp.json().message) {
+            fetchedData.push(this.getDropdownDatafromJson(opt));
+          }
         }
-
         // Remove duplicate devices in each room & create separate JSON obj
         const lookup = {};
 
@@ -101,8 +106,10 @@ export class SchedularService {
           fetchedData.push(this.getDropDownfromJson(opt));
         }
       } else if (this.name === 'state') {
-        for (const opt of resp.json()) {
-          fetchedData.push(this.getDropDownfromJson(opt));
+        if (resp.json().flag === 1) {
+          for (const opt of resp.json().message) {
+            fetchedData.push(this.getDropDownfromJson(opt));
+          }
         }
       }
 

@@ -20,14 +20,16 @@ export const AppConfig: IAppConfig = {
         {
             'roomNo': '01',
             'roomName': 'Room 1',
+            'link': 'room1',
             'name': 'Hall',
-            'link': 'room1'
+            'noOfDevices': 3
         },
         {
             'roomNo': '02',
             'roomName': 'Room 2',
+            'link': 'room2',
             'name': 'Bedroom',
-            'link': 'room2'
+            'noOfDevices': 3
         }
     ],
     version: '1.1'

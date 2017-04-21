@@ -150,15 +150,23 @@ export class SchedularComponent implements OnInit {
 
   loadSchedulars() {
     this.schedularService.getSchedulars().subscribe((schedulars) => {
-      this.schedular = schedulars;
+      if (schedulars.length > 0) {
+        this.schedular = schedulars;
+      } else {
+        console.log('beymax : zero scheddata fetched.');
+      }
     });
   }
 
   // Load room dropdown
   loadRoomData() {
     this.schedularService.getDropdownData('room', '').subscribe((dropdown) => {
-      this.rooms = dropdown;
-      this.rooms.unshift(new Dropdown('Select Room', null));
+      if (dropdown.length > 0) {
+        this.rooms = dropdown;
+        this.rooms.unshift(new Dropdown('Select Room', null));
+      } else {
+        console.log('beymax : zero selectdata fetched for room.');
+      }
     });
   }
 
@@ -244,9 +252,13 @@ export class SchedularComponent implements OnInit {
       this.clearDropDown('states');
 
       this.schedularService.getDropdownData('device', room.id).subscribe((dropdown) => {
-        this.devices = this.devices.concat(dropdown);
-        if (this.devices.length > 1) {
-          this.device = false;
+        if (dropdown.length > 0) {
+          this.devices = this.devices.concat(dropdown);
+          if (this.devices.length > 1) {
+            this.device = false;
+          }
+        } else {
+          console.log('beymax : zero selectdata fetched for device.');
         }
       });
     }
@@ -265,9 +277,13 @@ export class SchedularComponent implements OnInit {
       }
 
       this.schedularService.getDropdownData('state', device.id).subscribe((dropdown) => {
-        this.states = this.states.concat(dropdown);
-        if (this.states.length > 1) {
-          this.state = false;
+        if (dropdown.length > 0) {
+          this.states = this.states.concat(dropdown);
+          if (this.states.length > 1) {
+            this.state = false;
+          }
+        } else {
+          console.log('beymax : zero selectdata fetched for state.');
         }
       });
     }

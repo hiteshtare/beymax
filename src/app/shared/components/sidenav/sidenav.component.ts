@@ -13,6 +13,8 @@ declare var $: any; // jquery
 })
 export class SidenavComponent implements OnInit {
 
+  showSidenav = true;
+
   title = '';
   childLinks: Link[];
   parentLinks: Link[];

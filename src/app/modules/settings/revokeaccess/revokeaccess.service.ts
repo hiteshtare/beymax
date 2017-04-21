@@ -23,7 +23,7 @@ export class RevokeAccessService {
     obj.room = obj.room.length === '1' ? '0' + obj.room : obj.room;
     obj.device = obj.device.length === '1' ? '0' + obj.device : obj.device;
     obj.value = this.userId + obj.room + obj.device + obj.no;
-    return new CheckboxInfo(obj.room, obj.alias, obj.device, obj.name, obj.no, obj.isdim, obj.value);
+    return new CheckboxInfo(obj.room, obj.alias, obj.device, obj.name, obj.no, obj.nameno, obj.isdim, obj.value);
   }
 
 
@@ -36,8 +36,10 @@ export class RevokeAccessService {
 
     return this.http.get(url).map((resp: Response) => {
       this.fetchedCheckboxInfo = [];
-      for (const checkbox of resp.json()) {
-        this.fetchedCheckboxInfo.push(this.getCheckboxInfofromJson(checkbox));
+      if (resp.json().flag === 1) {
+        for (const checkbox of resp.json().message) {
+          this.fetchedCheckboxInfo.push(this.getCheckboxInfofromJson(checkbox));
+        }
       }
       return this.fetchedCheckboxInfo as Array<CheckboxInfo>;
     });
@@ -48,8 +50,10 @@ export class RevokeAccessService {
 
     return this.http.get(url).map((resp: Response) => {
       const fetchedRevokeInfo = [];
-      for (const revoke of resp.json()) {
-        fetchedRevokeInfo.push(this.getRevokeInfofromJson(revoke));
+      if (resp.json().flag === 1) {
+        for (const revoke of resp.json().message) {
+          fetchedRevokeInfo.push(this.getRevokeInfofromJson(revoke));
+        }
       }
       return fetchedRevokeInfo as Array<string>;
     });
@@ -60,19 +64,18 @@ export class RevokeAccessService {
     headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
     const body = { 'o_deviceId': selectedCheckboxes };
-
     const url = `${this.phpEndpoint + 'revokecheck(ng).php'}`;
 
     return this.http.post(url, body, { headers: headers }).map((resp: Response) => {
-      console.log(resp.json());
+      return resp.json();
     });
   }
 
   getCheckBoxDataByRoomNo(roomNo: string): any {
     const checkboxInfoByRoomNo = [];
-    const officecheckboxes = this.fetchedCheckboxInfo.filter(
+    const checkboxes = this.fetchedCheckboxInfo.filter(
       item => item.room === roomNo);
-    for (const checkbox of officecheckboxes) {
+    for (const checkbox of checkboxes) {
       checkboxInfoByRoomNo.push(checkbox.value);
     }
     return checkboxInfoByRoomNo as Array<string[]>;

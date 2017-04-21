@@ -1,7 +1,7 @@
 <div class="section no-pad-bot" id="index-banner">
   <div class="container">
     <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit(feedbackForm.value)">
-      <p-panel header="Feedback Form">
+      <p-panel header="Feedback">
         <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid dv-sched">
           <div class="ui-grid-row">
             <div class="ui-grid-col-3">
@@ -25,7 +25,7 @@
               Include Logs:
             </div>
             <div class="ui-grid-col-5">
-              <p-checkbox [formControl]="feedbackForm.controls['include']" binary="true"></p-checkbox>
+              <p-checkbox [formControl]="feedbackForm.controls['isattach']" binary="true"></p-checkbox>
             </div>
             <div class="ui-grid-col-4">
             </div>

@@ -28,8 +28,10 @@ export class DashboardService {
 
         return this.http.get(url).map((resp: Response) => {
             const fetchedActivities = [];
-            for (const act of resp.json()) {
-                fetchedActivities.push(this.getActivityfromJson(act));
+            if (resp.json().flag === 1) {
+                for (const act of resp.json().message) {
+                    fetchedActivities.push(this.getActivityfromJson(act));
+                }
             }
             return fetchedActivities as Array<Activity>;
         });

@@ -21,6 +21,7 @@ import { RoomNoPipe } from './shared/pipes/room-no.pipe';
 import { ChangepasswordService } from './modules/settings/changepassword/changepassword.service'; // custom services
 import { DashboardService } from './modules/dashboard/dashboard.service';
 import { FeedbackService } from './modules/about&help/feedback/feedback.service';
+import { LoginService } from './modules/login/login.service';
 import { RevokeAccessService } from './modules/settings/revokeaccess/revokeaccess.service';
 import { RoomService } from './modules/rooms/room.service';
 import { SchedularService } from './modules/schedular/schedular.service';
@@ -30,12 +31,13 @@ import { ChartsComponent } from './modules/charts/charts.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { FaqComponent } from './modules/about&help/faq/faq.component';
 import { FeedbackComponent } from './modules/about&help/feedback/feedback.component';
+import { LoginComponent } from './modules/login/login.component'; // custom components
 import { RevokeaccessComponent } from './modules/settings/revokeaccess/revokeaccess.component';
 import { Room1Component } from './modules/rooms/room1/room1.component';
 import { Room2Component } from './modules/rooms/room2/room2.component';
 import { SchedularComponent } from './modules/schedular/schedular.component';
 import { ServicestatusComponent } from './modules/about&help/servicestatus/servicestatus.component';
-import { VersionComponent } from './modules/about&help/version/version.component'; // custom components
+import { VersionComponent } from './modules/about&help/version/version.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { VersionComponent } from './modules/about&help/version/version.component
     SchedularComponent,
     ServicestatusComponent,
     SidenavComponent,
-    VersionComponent
+    VersionComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -78,10 +81,11 @@ import { VersionComponent } from './modules/about&help/version/version.component
     SliderModule,
     routing
   ],
-  providers: [appRoutingProviders, ChangepasswordService, ConfirmationService, DashboardService, FeedbackService,
+  providers: [appRoutingProviders, ChangepasswordService, ConfirmationService, DashboardService, FeedbackService, LoginService,
     NotifyService, RevokeAccessService, RoomService, SchedularService, SidenavService,
     { provide: APP_CONFIG, useValue: AppConfig }, { provide: ErrorHandler, useClass: CustomErrorHandlerService }
   ],
   bootstrap: [AppComponent]
+  // bootstrap: [LoginComponent]
 })
 export class AppModule { }

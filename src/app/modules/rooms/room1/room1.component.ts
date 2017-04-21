@@ -31,9 +31,12 @@ export class Room1Component implements OnInit {
 
   loadDeviceInfo() {
     this.roomService.getDeviceInfoByRoom(this.roomno).subscribe((deviceInfos) => {
-      this.deviceInfo = deviceInfos;
-      console.log(this.deviceInfo);
-      this.loadDeviceLastState();
+      if (deviceInfos.length > 0) {
+        this.deviceInfo = deviceInfos;
+        this.loadDeviceLastState();
+      } else {
+        console.log('beymax : zero roomdata fetched for room 1.');
+      }
     });
   }
 

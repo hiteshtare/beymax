@@ -1,33 +1,37 @@
 <div class="section no-pad-bot" id="index-banner">
   <div class="container">
-    <p-panel header="Toggle Access">
+    <p-panel header="Revoke Access">
       <div class="row">
         <div class="col s12 m12 l12">
           <p-checkbox class="bld-lbl chk-pad" label="Overall" value="" binary="true" [(ngModel)]="overall" (ngModelChange)="onOverallChange($event)"></p-checkbox>
         </div>
       </div>
       <hr>
-      <div class="row">
+      <div class="row" *ngIf="checkboxinfo">
         <div class="col s12 m6 l6">
           <p-checkbox class="bld-lbl chk-pad" label="{{this.roomDetails[0].name}}" value="" binary="true" [(ngModel)]="room1" (ngModelChange)="onRoom1Change($event)"></p-checkbox>
           <fieldset>
-            <div *ngFor="let checkbox of checkboxinfo | roomNo:1" class="ui-g-12">
-              <p-checkbox name="{{checkbox.alias}}" value="{{checkbox.value}}" label="{{checkbox.name}}" [(ngModel)]="selectedCheckboxes"></p-checkbox>
+            <div *ngFor="let checkbox of checkboxinfo | roomNo:'01'" class="ui-g-12">
+              <p-checkbox name="{{checkbox.alias}}" value="{{checkbox.value}}" label="{{checkbox.nameno}}" [(ngModel)]="selectedCheckboxes" (ngModelChange)="onCheckboxChange($event)"></p-checkbox>
             </div>
           </fieldset>
         </div>
         <div class="col s12 m6 l6">
           <p-checkbox class="bld-lbl chk-pad" label="{{this.roomDetails[1].name}}" value="" binary="true" [(ngModel)]="room2" (ngModelChange)="onRoom2Change($event)"></p-checkbox>
           <fieldset>
-            <div *ngFor="let checkbox of checkboxinfo | roomNo:2" class="ui-g-12">
-              <p-checkbox name="{{checkbox.alias}}" value="{{checkbox.value}}" label="{{checkbox.name}}" [(ngModel)]="selectedCheckboxes"></p-checkbox>
+            <div *ngFor="let checkbox of checkboxinfo | roomNo:'02'" class="ui-g-12">
+              <p-checkbox name="{{checkbox.alias}}" value="{{checkbox.value}}" label="{{checkbox.nameno}}" [(ngModel)]="selectedCheckboxes" (ngModelChange)="onCheckboxChange($event)"></p-checkbox>
             </div>
           </fieldset>
         </div>
       </div>
       <div class="row">
-        <div class="col s12 m12 l12 dv-ctr">
-          <button pButton type="button" label="Save" (click)="saveRevokeData();"></button>
+        <div class="col s1 m1 l4">
+        </div>
+        <div class="col s10 m10 l4 dv-ctr">
+          <button class="wid100" pButton type="button" label="Save" (click)="saveRevokeData();"></button>
+        </div>
+        <div class="col s1 m1 l4">
         </div>
       </div>
     </p-panel>

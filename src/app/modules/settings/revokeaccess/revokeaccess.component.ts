@@ -23,6 +23,9 @@ export class RevokeaccessComponent implements OnInit {
   room2checkboxes: string[] = [];
   selectedCheckboxes: string[] = [];
 
+  room1activecheckboxes: number;
+  room2activecheckboxes: number;
+
   checkboxinfo: CheckboxInfo[] = [];
 
   constructor( @Inject(APP_CONFIG) private config: IAppConfig, private revokeaccessService: RevokeAccessService,
@@ -33,6 +36,35 @@ export class RevokeaccessComponent implements OnInit {
   ngOnInit() {
     this.loadCheckBoxData();
     this.loadRevokeData();
+  }
+
+  checkActiveCheckboxesRooms() {
+    this.room1activecheckboxes = this.selectedCheckboxes.filter(item => item.substring(2, 4) // extract roomno from revokedata
+      === this.config.roomDetails[0].roomNo).length;
+    this.room2activecheckboxes = this.selectedCheckboxes.filter(item => item.substring(2, 4)
+      === this.config.roomDetails[1].roomNo).length;
+
+    if (this.room1activecheckboxes === this.config.roomDetails[0].noOfDevices) {
+      this.room1 = true;
+    } else {
+      this.room1 = false;
+    }
+
+    if (this.room2activecheckboxes === this.config.roomDetails[1].noOfDevices) {
+      this.room2 = true;
+    } else {
+      this.room2 = false;
+    }
+
+    if (this.room1 && this.room2) {
+      this.overall = true;
+    } else {
+      this.overall = false;
+    }
+  }
+
+  onCheckboxChange(event) {
+    this.checkActiveCheckboxesRooms();
   }
 
   onOverallChange(event) {
@@ -53,6 +85,7 @@ export class RevokeaccessComponent implements OnInit {
     } else {
       this.selectedCheckboxes = this.selectedCheckboxes.filter(x => this.room1checkboxes.indexOf(x) < 0);
     }
+    this.checkActiveCheckboxesRooms();
   }
 
   onRoom2Change(event) {
@@ -61,25 +94,39 @@ export class RevokeaccessComponent implements OnInit {
     } else {
       this.selectedCheckboxes = this.selectedCheckboxes.filter(x => this.room2checkboxes.indexOf(x) < 0);
     }
+    this.checkActiveCheckboxesRooms();
   }
 
   loadCheckBoxData() {
     this.revokeaccessService.getCheckBoxData().subscribe((checkboxdata) => {
-      this.checkboxinfo = checkboxdata;
-      this.room1checkboxes = this.revokeaccessService.getCheckBoxDataByRoomNo(this.config.roomDetails[0].roomNo);
-      this.room2checkboxes = this.revokeaccessService.getCheckBoxDataByRoomNo(this.config.roomDetails[1].roomNo);
+      if (checkboxdata.length > 0) {
+        this.checkboxinfo = checkboxdata;
+        this.room1checkboxes = this.revokeaccessService.getCheckBoxDataByRoomNo(this.config.roomDetails[0].roomNo);
+        this.room2checkboxes = this.revokeaccessService.getCheckBoxDataByRoomNo(this.config.roomDetails[1].roomNo);
+      } else {
+        this.notifyService.toastMessage('error', 'Revoke Access', '0 checkboxdata fetched.');
+      }
     });
   }
 
   loadRevokeData() {
     this.revokeaccessService.getRevokeData().subscribe((revokedata) => {
-      this.selectedCheckboxes = revokedata;
+      if (revokedata.length > 0) {
+        this.selectedCheckboxes = revokedata;
+        this.checkActiveCheckboxesRooms();
+      } else {
+        console.log('beymax : zero revokedata fetched.');
+      }
     });
   }
 
   saveRevokeData() {
     this.revokeaccessService.saveRevokeData(this.selectedCheckboxes).subscribe((response) => {
-      this.notifyService.toastMessage('success', 'Revoke Access', 'Records updated successfully.');
+      if (response.flag === 1) {
+        this.notifyService.toastMessage('success', 'Revoke Access', 'Records updated successfully.');
+      } else {
+        this.notifyService.toastMessage('error', 'Revoke Access', response.message);
+      }
     });
   }
 }

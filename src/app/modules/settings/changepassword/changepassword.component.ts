@@ -39,13 +39,13 @@ export class ChangepasswordComponent implements OnInit {
   onSubmit(formValue) {
 
     this.changepasswordService.changePassword(formValue.oldpwd, formValue.newpwd).subscribe((response) => {
-      console.log(response);
-
-      if (response === 1) {
+      if (response.flag === 1) {
         this.notifyService.toastMessage('success', 'Change Password', 'Password changed successfully.');
+        this.createForm();
       } else {
-        this.notifyService.toastMessage('error', 'Change Password', 'Password change failed!');
+        this.notifyService.toastMessage('error', 'Change Password', response.message);
       }
     });
+
   }
 }

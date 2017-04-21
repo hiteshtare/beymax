@@ -24,7 +24,11 @@ export class DashboardComponent implements OnInit {
 
   loadActivities() {
     this.dashboardService.getActivities().subscribe((activities) => {
-      this.activity = activities;
+      if (activities.length > 0) {
+        this.activity = activities;
+      } else {
+        console.log('beymax : zero recentdata fetched.');
+      }
     });
   }
 }

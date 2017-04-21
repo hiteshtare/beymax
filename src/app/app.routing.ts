@@ -1,3 +1,4 @@
+import { LoginComponent } from './modules/login/login.component';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -15,6 +16,7 @@ import { VersionComponent } from './modules/about&help/version/version.component
 
 const appRoutes: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent }, // login
     { path: 'changepassword', component: ChangepasswordComponent },
     { path: 'charts/:type', component: ChartsComponent },
     { path: 'dashboard', component: DashboardComponent },

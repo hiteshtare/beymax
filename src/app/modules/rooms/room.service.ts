@@ -27,12 +27,14 @@ export class RoomService {
     headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
     const body = `userid=${this.userId}&&room=${room}`;
-    const url = `${this.phpEndpoint + 'getdata.php'}`;
+    const url = `${this.phpEndpoint + 'getroomdata.php'}`;
 
     return this.http.post(url, body, { headers: headers }).map((resp: Response) => {
       const fetchedDeviceInfo = [];
-      for (const act of resp.json()) {
-        fetchedDeviceInfo.push(this.getDeviceInfofromJson(act));
+      if (resp.json().flag === 1) {
+        for (const act of resp.json().message) {
+          fetchedDeviceInfo.push(this.getDeviceInfofromJson(act));
+        }
       }
       return fetchedDeviceInfo as Array<DeviceInfo>;
     });

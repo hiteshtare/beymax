@@ -1,0 +1,41 @@
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <div class="loginPgDv">
+      <div class="loginPgIn">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+          <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+              <div class="loginPgDv">
+                <div class="loginPgIn">
+                  <div class="dvlogo"><img class="imglogonav" src="assets/Logo.png" alt=""></div>
+                  <div class="ui-message ui-messages-error ui-corner-all" *ngIf="isError">
+                    <i class="fa fa-close"></i>
+                    <span>{{errorMessage}}</span>
+                  </div>
+                  <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input pInputText type="text" [formControl]="loginForm.controls['user']" placeholder="Username" />
+                  </div>
+                  <div class="input-field col s6">
+                    <i class="material-icons prefix">lock</i>
+                    <input pInputText type="password" [formControl]="loginForm.controls['pwd']" placeholder="Password" />
+                  </div>
+                  <div class="loginInRw2">
+                    <button class="btn waves-effect waves-light blue btnsub" type="submit" [disabled]="!loginForm.valid">
+                                        Login
+                                    </button>
+                  </div>
+                  <br>
+                  <div class="loginInRw2">
+                    <label class="frget"><a href="#">Forgot Password?</a></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
