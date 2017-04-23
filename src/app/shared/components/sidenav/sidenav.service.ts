@@ -1,10 +1,12 @@
-import { Injectable, Inject } from '@angular/core';
+import { EventEmitter, Injectable, Inject } from '@angular/core';
 
 import { Link } from './link.model';
 import { APP_CONFIG, IAppConfig } from './../../config/app.config';
 
 @Injectable()
 export class SidenavService {
+
+  public showSidenav: EventEmitter<boolean> = new EventEmitter();
 
   roomDetails: any = [];
 

@@ -39,7 +39,13 @@ nav a {
 
 a.action-bar:hover {
     background-color: #1950d2 !important;
+    padding-top: 4px;
 }
+
+/*a.button-collapse:hover {
+    background-color: #1950d2 !important;
+    padding-top: 4px;
+}*/
 
 .side-nav {
     background-color:#141D26; 
@@ -69,8 +75,12 @@ div.active {
     background-color: #1976d2 !important;
 }
 
-.material-icons{
-    color: white !important;
+.side-nav .material-icons, .large-icons-on-large-only{
+    color:rgba(255, 255, 255, 1) !important;
+}
+
+.dark{
+    color: #757575 !important;
 }
 
 ul.side-nav.fixed div.logo {
@@ -134,9 +144,6 @@ a.button-collapse.top-nav i {
     float: right !important;    
 }
 
-.dark{
-    color: #757575 !important;
-}
 
 .dropdown-content li{
     min-height: 0 !important;

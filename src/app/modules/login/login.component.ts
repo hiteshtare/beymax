@@ -1,8 +1,11 @@
+import { SidenavService } from './../../shared/components/sidenav/sidenav.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from './../../shared/services/authentication.service';
+
+declare var $: any; // jquery
 
 @Component({
   selector: 'app-login',
@@ -17,14 +20,15 @@ export class LoginComponent implements OnInit {
   isError: boolean;
   errorMessage: string;
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,
-    private authenticationService: AuthenticationService) {
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private router: Router,
+    private authenticationService: AuthenticationService, private sidenavService: SidenavService) {
     this.createForm();
   }
 
   ngOnInit() {
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    $('header').hide();  // hide sidenav
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'dashboard';
   }
 
   // Initialise form with validations
@@ -40,7 +44,7 @@ export class LoginComponent implements OnInit {
       if (response.flag === 1) {
         this.isError = false;
         this.errorMessage = '';
-        this.router.navigate(['dashboard']);
+        this.router.navigate([this.returnUrl]);
       } else {
         this.isError = true;
         this.errorMessage = response.message;

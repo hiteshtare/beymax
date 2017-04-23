@@ -13,7 +13,8 @@
       <ul class="dropdown-content" id="actionbar">
         <li><a href="javascript:location.reload()" class="waves-effect waves"><i class="material-icons dark left">refresh</i>Refresh</a></li>
         <li class="divider"></li>
-        <li><a [routerLink]="['login']" class="waves-effect waves"><i class="material-icons dark left">input</i>Logout</a></li>
+        <!--[routerLink]="['login']"-->
+        <li><a (click)="logoutClicked();" class="waves-effect waves"><i class="material-icons dark left">input</i>Logout</a></li>
       </ul>
     </div>
   </div>

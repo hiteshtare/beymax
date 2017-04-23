@@ -18,7 +18,7 @@ import { MsgComponent } from './shared/components/msg/msg.component'; // custom 
 import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
 import { ChildLinksPipe } from './shared/pipes/child-links.pipe'; // custom pipes
 import { RoomNoPipe } from './shared/pipes/room-no.pipe';
-import { AuthenticationService } from './modules/login/authentication.service'; // custom services
+import { AuthGuard } from './shared/guards/auth.guard'; // custom guards
 import { ChangepasswordService } from './modules/settings/changepassword/changepassword.service';
 import { DashboardService } from './modules/dashboard/dashboard.service';
 import { FeedbackService } from './modules/about&help/feedback/feedback.service';
@@ -26,6 +26,7 @@ import { RevokeAccessService } from './modules/settings/revokeaccess/revokeacces
 import { RoomService } from './modules/rooms/room.service';
 import { SchedularService } from './modules/schedular/schedular.service';
 import { SidenavService } from './shared/components/sidenav/sidenav.service'; // custom services
+import { AuthenticationService } from './shared/services/authentication.service';
 import { ChangepasswordComponent } from './modules/settings/changepassword/changepassword.component'; // custom components
 import { ChartsComponent } from './modules/charts/charts.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
@@ -81,11 +82,10 @@ import { VersionComponent } from './modules/about&help/version/version.component
     SliderModule,
     routing
   ],
-  providers: [appRoutingProviders, AuthenticationService, ChangepasswordService, ConfirmationService, DashboardService, FeedbackService,
-    NotifyService, RevokeAccessService, RoomService, SchedularService, SidenavService,
+  providers: [appRoutingProviders, AuthGuard, AuthenticationService, ChangepasswordService, ConfirmationService,
+    DashboardService, FeedbackService, NotifyService, RevokeAccessService, RoomService, SchedularService, SidenavService,
     { provide: APP_CONFIG, useValue: AppConfig }, { provide: ErrorHandler, useClass: CustomErrorHandlerService }
   ],
   bootstrap: [AppComponent]
-  // bootstrap: [LoginComponent]
 })
 export class AppModule { }

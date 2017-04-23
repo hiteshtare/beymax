@@ -4,6 +4,8 @@ import { Activity } from './activity.model';
 import { DashboardService } from './dashboard.service';
 import { NotifyService } from './../../shared/services/notify.service';
 
+declare var $: any; // jquery
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -19,6 +21,9 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    $('header').show(); // show sidenav
+
     this.loadActivities();
   }
 

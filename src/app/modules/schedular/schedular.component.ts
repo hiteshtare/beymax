@@ -48,8 +48,8 @@ export class SchedularComponent implements OnInit {
   items: MenuItem[];
 
   constructor(private fb: FormBuilder, @Inject(APP_CONFIG) private config: IAppConfig,
-    private schedularService: SchedularService, private notifyService: NotifyService,
-    private confirmationService: ConfirmationService) {
+    private schedularService: SchedularService, private confirmationService: ConfirmationService,
+    private notifyService: NotifyService) {
     this.createForm();
     this.userId = this.config.userId;
   }
