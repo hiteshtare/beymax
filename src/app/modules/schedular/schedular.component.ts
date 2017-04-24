@@ -10,6 +10,7 @@ import { APP_CONFIG, IAppConfig } from './../../shared/config/app.config';
 import { Dropdown, Schedular } from './schedular.model';
 import { SchedularService } from './schedular.service';
 import { NotifyService } from './../../shared/services/notify.service';
+import { fadeInAnimation } from './../../shared/animations/fade-in.animation';
 
 declare var $: any; // jquery
 
@@ -17,7 +18,8 @@ declare var $: any; // jquery
   selector: 'app-schedular',
   templateUrl: './schedular.component.html',
   styleUrls: ['./schedular.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  animations: [fadeInAnimation]
 })
 export class SchedularComponent implements OnInit {
 

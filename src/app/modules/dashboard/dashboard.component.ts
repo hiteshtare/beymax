@@ -3,6 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Activity } from './activity.model';
 import { DashboardService } from './dashboard.service';
 import { NotifyService } from './../../shared/services/notify.service';
+import { fadeInAnimation } from './../../shared/animations/fade-in.animation';
 
 declare var $: any; // jquery
 
@@ -10,7 +11,8 @@ declare var $: any; // jquery
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  animations: [fadeInAnimation]
 })
 
 export class DashboardComponent implements OnInit {

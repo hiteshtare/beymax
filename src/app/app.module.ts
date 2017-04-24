@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // animations modules
 import { MaterializeModule } from 'angular2-materialize'; // Materialize CSS framework
 import {
   ButtonModule, CheckboxModule, ConfirmDialogModule, ConfirmationService, ContextMenu, ContextMenuModule,
@@ -80,7 +81,8 @@ import { VersionComponent } from './modules/about&help/version/version.component
     ReactiveFormsModule,
     SharedModule,
     SliderModule,
-    routing
+    routing,
+    BrowserAnimationsModule
   ],
   providers: [appRoutingProviders, AuthGuard, AuthenticationService, ChangepasswordService, ConfirmationService,
     DashboardService, FeedbackService, NotifyService, RevokeAccessService, RoomService, SchedularService, SidenavService,
