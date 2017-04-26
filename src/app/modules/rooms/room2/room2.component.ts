@@ -14,9 +14,9 @@ export class Room2Component implements OnInit {
   roomno: string;
 
   checked11 = false;
-  slider21: number[] = [0, 0];
+  slider21: number;
   checked341 = false;
-  slider341: number[] = [0, 16];
+  slider341: number;
 
   acDialog = false;
 

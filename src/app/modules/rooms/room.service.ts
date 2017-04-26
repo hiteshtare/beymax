@@ -62,10 +62,9 @@ export class RoomService {
     return val === '19' ? true : false;
   }
 
-  getArrSlidedValue(val: any): number[] {
+  getArrSlidedValue(val: any): number {
     const newVal = +val - 10;
-    const numArray: number[] = [0, newVal];
-    return numArray;
+    return newVal;
   }
 
   getStrCheckedValue(val: any): string {
@@ -73,7 +72,6 @@ export class RoomService {
   }
 
   getStrSlidedValue(val: any): string {
-    const strArray: string[] = String(val).split(',');
-    return strArray[1].length === 2 ? strArray[1] : '1' + strArray[1];
+    return val.length === 2 ? val : '1' + val;
   }
 }

@@ -13,8 +13,7 @@
         <figure class="fig-device">
           <img src="assets/fan.svg" alt="" />
         </figure>
-        <p-slider [(ngModel)]="slider21" [range]="true" [min]="0" [max]="7" [step]="1" [animate]="true" styleClass="slider-ctrl"
-          (ngModelChange)="onSlider21Change($event)"></p-slider>
+        <p-slider [(ngModel)]="slider21" [min]="0" [max]="7" [step]="1" [animate]="true" styleClass="slider-ctrl" (ngModelChange)="onSlider21Change($event)"></p-slider>
         <img class="img-slider" src="assets/scale_blk_small.png" alt="" />
       </div>
       <div class="col s12 m6 l3">
@@ -27,9 +26,8 @@
 
         <p-dialog header="Air Conditioner" [(visible)]="acDialog" modal="true" responsive="true" closeOnEscape="true" dismissableMask="true">
           <p-inputSwitch [(ngModel)]="checked341" styleClass="switch-ctrl_modal" (ngModelChange)="onChecked341Change($event)"></p-inputSwitch>
-          <p-slider [(ngModel)]="slider341" [range]="true" [min]="16" [max]="23" [step]="1" [animate]="true" styleClass="slider-ctrl_modal"
-            (ngModelChange)="onSlider341Change($event)"></p-slider>
-            <img src="assets/scale_blk_large.png" alt="" />
+          <p-slider [(ngModel)]="slider341" [min]="16" [max]="23" [step]="1" [animate]="true" styleClass="slider-ctrl_modal" (ngModelChange)="onSlider341Change($event)"></p-slider>
+          <img src="assets/scale_blk_large.png" alt="" />
           <table class="tbl-ac">
             <tr>
               <td><a id="ACTU" name="13" (click)="onACbuttonsClicked($event);" class="ACBtn waves-effect waves-dark btn amber lighten-2 popup-btn-font">Turbo</a></td>
@@ -42,7 +40,7 @@
                 <a id="ACPS" name="12" (click)="onACbuttonsClicked($event);" class="ACBtn waves-effect waves-dark btn amber lighten-2 popup-btn-font">Power <br>Saver</a>
               </td>
               <td>
-                <a id="ACSW" name="30"  (click)="onACbuttonsClicked($event);" class="ACBtn waves-effect waves-dark btn amber lighten-2 popup-btn-font">Swing</a>
+                <a id="ACSW" name="30" (click)="onACbuttonsClicked($event);" class="ACBtn waves-effect waves-dark btn amber lighten-2 popup-btn-font">Swing</a>
               </td>
             </tr>
           </table>

@@ -17,7 +17,7 @@ export class Room1Component implements OnInit {
   checked11 = false;
   checked12 = false;
 
-  slider21: number[] = [0, 0];
+  slider21: number;
 
   deviceInfo: DeviceInfo[];
 
