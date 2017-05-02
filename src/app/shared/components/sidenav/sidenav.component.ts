@@ -51,7 +51,7 @@ export class SidenavComponent implements OnInit {
       });
     }
 
-    this.title = 'Dashboard';
+    this.title = 'Change Password';
   }
 
   linkClicked(event) {

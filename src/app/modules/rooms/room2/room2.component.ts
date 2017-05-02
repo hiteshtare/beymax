@@ -3,12 +3,14 @@ import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { APP_CONFIG, IAppConfig } from './../../../shared/config/app.config';
 import { DeviceInfo } from './../device-info.model';
 import { RoomService } from './../room.service';
+import { enterAnimation } from './../../../shared/animations/enter.animation';
 
 @Component({
   selector: 'app-room2',
   templateUrl: './room2.component.html',
   styleUrls: ['../room.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None, // applying custom styles to ngPrime components
+  animations: [enterAnimation]
 })
 export class Room2Component implements OnInit {
   roomno: string;

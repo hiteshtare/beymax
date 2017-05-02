@@ -4,18 +4,18 @@
     line-height: 0;
 }
 
-.btnsub{
-width: 100%;
+.btnsub {
+    width: 100%;
 }
 
-.loginInRw2{
+.loginInRw2 {
     text-align: center;
 }
 
 .loginPgDv {
     width: 370px;
     margin: 0 auto;
-    height:348px;
+    height: 348px;
     max-height: 300px;
     display: block;
     position: absolute;
@@ -35,10 +35,9 @@ width: 100%;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -webkit-border-radius: 10px;
-       box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-    
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
-.material-icons{
-        padding-top: 5px;
+.material-icons {
+    padding-top: 5px;
 }

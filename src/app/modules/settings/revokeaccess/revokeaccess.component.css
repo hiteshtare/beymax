@@ -1,38 +1,36 @@
-.chk-hdr{
+.chk-hdr {
     margin-top: 0px !important;
-        color: #5C666A;
-            display: block;
+    color: #5C666A;
+    display: block;
     font-size: 2em;
 }
 
-.chk-pad
-{
-margin-left: 10px
+.chk-pad {
+    margin-left: 10px
 }
+
 .ui-chkbox-label {
     vertical-align: middle;
     font-size: 1em;
 }
 
-.bld-lbl{
-font-weight: bold;
-font-size: 18px;
+.bld-lbl {
+    font-weight: bold;
+    font-size: 18px;
 }
 
-
-.dv-ctr{
-     text-align:center
+.dv-ctr {
+    text-align: center
 }
 
-fieldset{
+fieldset {
     margin: 10px;
 }
 
-.ui-panel.ui-widget
-{
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2)
+.ui-panel.ui-widget {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2)
 }
 
-.wid100{
+.wid100 {
     width: 100%;
 }
