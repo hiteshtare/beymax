@@ -1,0 +1,14 @@
+p-header {
+    font-size: initial;
+    font-weight: 500;
+}
+
+.ui-accordion-header.ui-state-active {
+    border-left: 1px solid #d9d9d9 !important;
+    border-right: 1px solid #d9d9d9 !important;
+}
+
+.ui-accordion-content-wrapper {
+    border-left: 1px solid #d9d9d9;
+    border-right: 1px solid #d9d9d9;
+}

@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Message } from 'primeng/primeng';
+
+import { ServicestatusService } from "app/modules/about&help/servicestatus/servicestatus.service";
 
 @Component({
   selector: 'app-servicestatus',
@@ -8,11 +11,24 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class ServicestatusComponent implements OnInit {
 
-  status: string;
+  //status: string;
+  status: Message[] = [];
 
-  constructor() { }
+  constructor(private servicestatusService: ServicestatusService) { }
 
   ngOnInit() {
-    this.status = 'Service is running (Dummy).';
+    this.loadServiceStatus();
+  }
+
+  loadServiceStatus() {
+    this.servicestatusService.getServiceStatus().subscribe((response) => {
+      if (response.flag === 1) {
+        this.status = [];
+        this.status.push({ severity: 'success', summary: 'Success', detail: response.message });
+      } else {
+        this.status = [];
+        this.status.push({ severity: 'error', summary: 'Error', detail: response.message });
+      }
+    });
   }
 }

@@ -1,3 +1,16 @@
-<p>
-  faq works!
-</p>
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <p-panel header="Frequently Asked Questions">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+        <p-accordion [multiple]="true">
+          <p-accordionTab *ngFor="let faq of faqs">
+            <p-header>
+              {{faq.header}}
+            </p-header>
+            <div [innerHTML]="faq.body_content"></div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+    </p-panel>
+  </div>
+</div>
