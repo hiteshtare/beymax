@@ -2,6 +2,7 @@ nav {
     background-color: #1976d2 !important;
     width: 100%;
     color: #fff;
+    line-height: 80px;
 }
 
 nav.top-nav {
@@ -83,6 +84,10 @@ div.active {
 
 .dark {
     color: #757575 !important;
+}
+
+ul.side-nav.fixed {
+    overflow: hidden;
 }
 
 ul.side-nav.fixed div.logo {
@@ -306,7 +311,7 @@ input:not([type]):focus:not([readonly]) {
         padding-left: 0;
     }
     nav .nav-wrapper a.page-title {
-        font-size: 30px;
+        font-size: 22px;
     }
     a.button-collapse.top-nav {
         position: absolute;
@@ -383,7 +388,7 @@ input:not([type]):focus:not([readonly]) {
         padding-left: 0;
     }
     nav .nav-wrapper a.page-title {
-        font-size: 30px;
+        font-size: 22px;
     }
     a.button-collapse.top-nav {
         position: absolute;
@@ -591,7 +596,7 @@ iPad 3
         padding-left: 0;
     }
     nav .nav-wrapper a.page-title {
-        font-size: 30px;
+        font-size: 22px;
     }
     a.button-collapse.top-nav {
         position: absolute;
@@ -633,7 +638,8 @@ iPad 3
         padding-left: 0;
     }
     nav .nav-wrapper a.page-title {
-        font-size: 30px;
+        font-size: 22px;
+        line-height: 76px;
     }
     a.button-collapse.top-nav {
         position: absolute;

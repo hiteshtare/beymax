@@ -25,7 +25,7 @@ export class FaqService {
     new FAQ('I\'\m getting "Error -Service has stopped working!" when I navigate to Service Status page, what should I do?', 'This error is caused when your raspberry pi device is <b>turned off</b>.Please <b>turn on</b> the device.'), 
     new FAQ('What is a schedular? Why do I need to configure it?', 'Schedular is <u>automated activity</u> use to change <i>the state of the device installed in a room.</i>')];
 
-    return faqs
+    return faqs;
   }
 
 }

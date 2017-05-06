@@ -1,33 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 // declare var $: any;//jquery
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.css'],
+	encapsulation: ViewEncapsulation.None
 })
 
 export class AppComponent implements OnInit {
 
-  constructor() {
-  }
+	constructor() {
+	}
 
-  ngOnInit() {
-  //   $(window).scroll(function () {
-	// 						if ($(this).scrollTop() > 100) {
-	// 								$('.scrollupbtn').fadeIn();
-	// 						} else {
-	// 								$('.scrollupbtn').fadeOut();
-	// 						}
-	// 					});
+	ngOnInit() {
+		//   $(window).scroll(function () {
+		// 						if ($(this).scrollTop() > 100) {
+		// 								$('.scrollupbtn').fadeIn();
+		// 						} else {
+		// 								$('.scrollupbtn').fadeOut();
+		// 						}
+		// 					});
 
-	// 				$('.scrollupbtn').click(function () {
-	// 						$("html, body").animate({
-	// 								scrollTop: 0
-	// 						}, 600);
-	// 						return false;
-	// 				});
-  }
+		// 				$('.scrollupbtn').click(function () {
+		// 						$("html, body").animate({
+		// 								scrollTop: 0
+		// 						}, 600);
+		// 						return false;
+		// 				});
+	}
 }
 
