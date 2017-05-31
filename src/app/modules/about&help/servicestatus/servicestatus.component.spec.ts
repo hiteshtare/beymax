@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { PanelModule } from 'primeng/primeng';
+import { HttpModule } from '@angular/http';
+import { MessagesModule } from 'primeng/primeng';
 
+import { AppConfig, APP_CONFIG } from './../../../shared/config/app.config';
+import { ServicestatusService } from 'app/modules/about&help/servicestatus/servicestatus.service';
 import { ServicestatusComponent } from './servicestatus.component';
 
 describe('ServicestatusComponent', () => {
@@ -10,7 +13,8 @@ describe('ServicestatusComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ServicestatusComponent],
-      imports: [PanelModule]
+      imports: [HttpModule, MessagesModule],
+      providers: [ServicestatusService, { provide: APP_CONFIG, useValue: AppConfig }]
     })
       .compileComponents();
   }));

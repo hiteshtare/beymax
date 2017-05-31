@@ -3,18 +3,18 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 // declare var $: any;//jquery
 
 @Component({
-	selector: 'app-root',
-	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.css'],
-	encapsulation: ViewEncapsulation.None
+selector: 'app-root',
+templateUrl: './app.component.html',
+styleUrls: ['./app.component.css'],
+encapsulation: ViewEncapsulation.None
 })
 
 export class AppComponent implements OnInit {
 
-	constructor() {
-	}
+constructor() {
+}
 
-	ngOnInit() {
+ngOnInit() {
 		//   $(window).scroll(function () {
 		// 						if ($(this).scrollTop() > 100) {
 		// 								$('.scrollupbtn').fadeIn();
@@ -29,6 +29,6 @@ export class AppComponent implements OnInit {
 		// 						}, 600);
 		// 						return false;
 		// 				});
-	}
+}
 }
 

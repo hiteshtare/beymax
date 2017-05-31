@@ -23,12 +23,12 @@ import { AuthGuard } from './shared/guards/auth.guard'; // custom guards
 import { AuthenticationService } from './shared/services/authentication.service'; // custom services
 import { ChangepasswordService } from './modules/settings/changepassword/changepassword.service';
 import { DashboardService } from './modules/dashboard/dashboard.service';
-import { FaqService } from "app/modules/about&help/faq/faq.service";
+import { FaqService } from 'app/modules/about&help/faq/faq.service';
 import { FeedbackService } from './modules/about&help/feedback/feedback.service';
 import { RevokeAccessService } from './modules/settings/revokeaccess/revokeaccess.service';
 import { RoomService } from './modules/rooms/room.service';
 import { SchedularService } from './modules/schedular/schedular.service';
-import { ServicestatusService } from "app/modules/about&help/servicestatus/servicestatus.service";
+import { ServicestatusService } from 'app/modules/about&help/servicestatus/servicestatus.service';
 import { SidenavService } from './shared/components/sidenav/sidenav.service'; // custom services
 import { ChangepasswordComponent } from './modules/settings/changepassword/changepassword.component'; // custom components
 import { ChartsComponent } from './modules/charts/charts.component';
@@ -90,7 +90,8 @@ import { VersionComponent } from './modules/about&help/version/version.component
   ],
   providers: [appRoutingProviders, AuthGuard, AuthenticationService, ChangepasswordService, ConfirmationService,
     DashboardService, FaqService, FeedbackService, NotifyService, RevokeAccessService, RoomService, SchedularService,
-    ServicestatusService, SidenavService, { provide: APP_CONFIG, useValue: AppConfig }, { provide: ErrorHandler, useClass: CustomErrorHandlerService }
+    ServicestatusService, SidenavService, { provide: APP_CONFIG, useValue: AppConfig },
+    { provide: ErrorHandler, useClass: CustomErrorHandlerService }
   ],
   bootstrap: [AppComponent]
 })

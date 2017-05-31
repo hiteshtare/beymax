@@ -1,11 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CheckboxModule, PanelModule } from 'primeng/primeng';
 
 import { AppConfig, APP_CONFIG } from './../../../shared/config/app.config';
-import { FeedbackService } from './feedback.service';
 import { NotifyService } from './../../../shared/services/notify.service';
+import { FeedbackService } from './feedback.service';
 import { FeedbackComponent } from './feedback.component';
 
 describe('FeedbackComponent', () => {
@@ -15,7 +16,7 @@ describe('FeedbackComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [FeedbackComponent],
-      imports: [CheckboxModule, FormsModule, HttpModule, PanelModule, ReactiveFormsModule],
+      imports: [BrowserAnimationsModule, CheckboxModule, FormsModule, HttpModule, PanelModule, ReactiveFormsModule],
       providers: [FeedbackService, NotifyService, { provide: APP_CONFIG, useValue: AppConfig }]
     })
       .compileComponents();

@@ -1,10 +1,14 @@
 import { TestBed, inject } from '@angular/core/testing';
+import { HttpModule } from '@angular/http';
+
+import { AppConfig, APP_CONFIG } from './../../../shared/config/app.config';
 import { ServicestatusService } from './servicestatus.service';
 
 describe('ServicestatusService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ServicestatusService]
+      imports: [HttpModule],
+      providers: [ServicestatusService, { provide: APP_CONFIG, useValue: AppConfig }]
     });
   });
 

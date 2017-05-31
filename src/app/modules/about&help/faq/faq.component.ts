@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-import { FaqService } from "app/modules/about&help/faq/faq.service";
-import { FAQ } from "app/modules/about&help/faq/faq.model";
+import { FAQ } from 'app/modules/about&help/faq/faq.model';
+import { FaqService } from 'app/modules/about&help/faq/faq.service';
 
 @Component({
   selector: 'app-faq',

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Message } from 'primeng/primeng';
 
-import { ServicestatusService } from "app/modules/about&help/servicestatus/servicestatus.service";
+import { ServicestatusService } from 'app/modules/about&help/servicestatus/servicestatus.service';
 
 @Component({
   selector: 'app-servicestatus',
@@ -11,7 +11,7 @@ import { ServicestatusService } from "app/modules/about&help/servicestatus/servi
 })
 export class ServicestatusComponent implements OnInit {
 
-  //status: string;
+  // status: string;
   status: Message[] = [];
 
   constructor(private servicestatusService: ServicestatusService) { }

@@ -7,9 +7,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TestBed, async } from '@angular/core/testing';
 import { MaterializeModule } from 'angular2-materialize'; // Materialize CSS framework
 import {
-  ButtonModule, CheckboxModule, ConfirmDialogModule, ConfirmationService, ContextMenu, ContextMenuModule,
+  AccordionModule, ButtonModule, CheckboxModule, ConfirmDialogModule, ConfirmationService, ContextMenu, ContextMenuModule,
   DataTableModule, DialogModule, DropdownModule, GrowlModule, InputSwitchModule, InputTextModule, MenuItem, MenuModule,
-  PanelModule, SelectItem, SharedModule, SliderModule
+  MessagesModule, PanelModule, SelectItem, SharedModule, SliderModule
 } from 'primeng/primeng';  //  PrimeNG modules
 
 import { APP_CONFIG, AppConfig } from './shared/config/app.config'; // app config
@@ -19,7 +19,8 @@ import { MsgComponent } from './shared/components/msg/msg.component'; // custom 
 import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
 import { ChildLinksPipe } from './shared/pipes/child-links.pipe'; // custom pipes
 import { RoomNoPipe } from './shared/pipes/room-no.pipe';
-import { ChangepasswordService } from './modules/settings/changepassword/changepassword.service'; // custom services
+import { AuthenticationService } from 'app/shared/services/authentication.service'; // custom services
+import { ChangepasswordService } from './modules/settings/changepassword/changepassword.service';
 import { DashboardService } from './modules/dashboard/dashboard.service';
 import { FeedbackService } from './modules/about&help/feedback/feedback.service';
 import { RevokeAccessService } from './modules/settings/revokeaccess/revokeaccess.service';
@@ -63,6 +64,7 @@ describe('App: AngularExample', () => {
         VersionComponent
       ],
       imports: [
+        AccordionModule,
         BrowserModule,
         ButtonModule,
         CheckboxModule,
@@ -78,13 +80,14 @@ describe('App: AngularExample', () => {
         InputTextModule,
         MaterializeModule,
         MenuModule,
+        MessagesModule,
         PanelModule,
         ReactiveFormsModule,
         SharedModule,
         SliderModule,
         RouterTestingModule
       ],
-      providers: [ChangepasswordService, ConfirmationService, DashboardService, FeedbackService, NotifyService,
+      providers: [AuthenticationService, ChangepasswordService, ConfirmationService, DashboardService, FeedbackService, NotifyService,
         RevokeAccessService, RoomService, SchedularService, SidenavService, { provide: APP_CONFIG, useValue: AppConfig },
         { provide: ErrorHandler, useClass: CustomErrorHandlerService }, { provide: APP_BASE_HREF, useValue: '/' }]
     });

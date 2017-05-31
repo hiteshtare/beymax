@@ -1,9 +1,9 @@
-import { SidenavService } from './../../shared/components/sidenav/sidenav.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthenticationService } from './../../shared/services/authentication.service';
+import { SidenavService } from './../../shared/components/sidenav/sidenav.service';
 
 declare var $: any; // jquery
 
@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
     $('header').hide();  // hide sidenav
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'dashboard';
+    // this.returnUrl = 'dashboard';
   }
 
   // Initialise form with validations
